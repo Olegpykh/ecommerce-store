@@ -1,12 +1,11 @@
 export interface Category {
-  id: number;
+  slug: string;
   name: string;
-  image: string;
+  url: string;
 }
 
 export interface CategoriesState {
-  categoryItems: Category[];
-  currentCategory: Category | null;
-  status: 'idle' | 'loading' | 'succeeded' | 'failed';
-  error: string | null;
+  categoriesItems: Category[];
+  categoriesStatus: 'idle' | 'loading' | 'succeeded' | 'failed';
+  categoriesError: string | null;
 }

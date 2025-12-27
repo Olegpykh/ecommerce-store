@@ -1,19 +1,34 @@
 export interface Product {
   id: number;
   title: string;
-  price: number;
   description: string;
+  price: number;
+  discountPercentage: number;
+  rating: number;
+  stock: number;
+  brand: string;
+  category: string;
+
+  thumbnail: string;
   images: string[];
-  category: {
-    id: number;
-    name: string;
-    image: string;
-  };
+
+  tags?: string[];
+  availabilityStatus?: string;
+  returnPolicy?: string;
+  shippingInformation?: string;
+  sku?: string;
+  weight?: number;
 }
 
 export interface ProductsState {
   productsItems: Product[];
   currentProduct: Product | null;
-  error: string | null;
-  status: 'idle' | 'loading' | 'succeeded' | 'failed';
+
+  productsStatus: 'idle' | 'loading' | 'succeeded' | 'failed';
+  productStatus: 'idle' | 'loading' | 'succeeded' | 'failed';
+  categoryProductsStatus: 'idle' | 'loading' | 'succeeded' | 'failed';
+
+  productsError: string | null;
+  productError: string | null;
+  categoryProductsError: string | null;
 }
