@@ -1,16 +1,22 @@
+import { createSlice } from '@reduxjs/toolkit';
 import {
   fetchProducts,
   fetchProductById,
   fetchProductsByCategory,
 } from './productsThunks';
-import { createSlice } from '@reduxjs/toolkit';
 import { ProductsState } from './types';
 
 const initialState: ProductsState = {
   productsItems: [],
   currentProduct: null,
-  error: null,
-  status: 'idle',
+
+  productsStatus: 'idle',
+  productStatus: 'idle',
+  categoryProductsStatus: 'idle',
+
+  productsError: null,
+  productError: null,
+  categoryProductsError: null,
 };
 
 export const productsSlice = createSlice({
@@ -20,41 +26,43 @@ export const productsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchProducts.pending, (state) => {
-        state.status = 'loading';
+        state.productsStatus = 'loading';
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
-        state.status = 'succeeded';
+        state.productsStatus = 'succeeded';
         state.productsItems = action.payload;
       })
       .addCase(fetchProducts.rejected, (state, action) => {
-        state.status = 'failed';
-        state.error = action.error.message || 'Failed to load products';
+        state.productsStatus = 'failed';
+        state.productsError = action.error.message || 'Failed to load products';
       });
 
     builder
       .addCase(fetchProductById.pending, (state) => {
-        state.status = 'loading';
+        state.productStatus = 'loading';
+        state.currentProduct = null;
       })
       .addCase(fetchProductById.fulfilled, (state, action) => {
-        state.status = 'succeeded';
+        state.productStatus = 'succeeded';
         state.currentProduct = action.payload;
       })
       .addCase(fetchProductById.rejected, (state, action) => {
-        state.status = 'failed';
-        state.error = action.error.message || 'Failed to load product';
+        state.productStatus = 'failed';
+        state.productError = action.error.message || 'Failed to load product';
       });
 
     builder
       .addCase(fetchProductsByCategory.pending, (state) => {
-        state.status = 'loading';
+        state.categoryProductsStatus = 'loading';
       })
       .addCase(fetchProductsByCategory.fulfilled, (state, action) => {
-        state.status = 'succeeded';
+        state.categoryProductsStatus = 'succeeded';
         state.productsItems = action.payload;
       })
       .addCase(fetchProductsByCategory.rejected, (state, action) => {
-        state.status = 'failed';
-        state.error = action.error.message || 'Failed to load product';
+        state.categoryProductsStatus = 'failed';
+        state.categoryProductsError =
+          action.error.message || 'Failed to load category products';
       });
   },
 });

@@ -1,12 +1,11 @@
-import { fetchCategories, fetchCategoriesById } from './categoriesThunks';
 import { createSlice } from '@reduxjs/toolkit';
+import { fetchCategories } from './categoriesThunks';
 import { CategoriesState } from './types';
 
 const initialState: CategoriesState = {
-  categoryItems: [],
-  currentCategory: null,
-  status: 'idle',
-  error: null,
+  categoriesItems: [],
+  categoriesStatus: 'idle',
+  categoriesError: null,
 };
 
 export const categoriesSlice = createSlice({
@@ -15,29 +14,17 @@ export const categoriesSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+
       .addCase(fetchCategories.pending, (state) => {
-        state.status = 'loading';
+        state.categoriesStatus = 'loading';
       })
       .addCase(fetchCategories.fulfilled, (state, action) => {
-        state.status = 'succeeded';
-        state.categoryItems = action.payload;
+        state.categoriesStatus = 'succeeded';
+        state.categoriesItems = action.payload;
       })
       .addCase(fetchCategories.rejected, (state, action) => {
-        state.status = 'failed';
-        state.error = action.error.message || 'Failed to load categories';
-      });
-
-    builder
-      .addCase(fetchCategoriesById.pending, (state) => {
-        state.status = 'loading';
-      })
-      .addCase(fetchCategoriesById.fulfilled, (state, action) => {
-        state.status = 'succeeded';
-        state.currentCategory = action.payload;
-      })
-      .addCase(fetchCategoriesById.rejected, (state, action) => {
-        state.status = 'failed';
-        state.error = action.error.message || 'Failed to load category';
+        state.categoriesStatus = 'failed';
+        state.categoriesError = action.error.message || 'Failed to load categories';
       });
   },
 });

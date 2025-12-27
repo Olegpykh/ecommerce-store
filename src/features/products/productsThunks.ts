@@ -5,7 +5,7 @@ export const fetchProducts = createAsyncThunk(
   'products/fetchProducts',
   async () => {
     const res = await productsApi.getAll();
-    return res.data;
+    return res.data.products; 
   }
 );
 
@@ -13,14 +13,14 @@ export const fetchProductById = createAsyncThunk(
   'products/fetchProductById',
   async (id: number) => {
     const res = await productsApi.getOne(id);
-    return res.data;
+    return res.data; 
   }
 );
 
 export const fetchProductsByCategory = createAsyncThunk(
   'products/fetchProductsByCategory',
-  async (id: number) => {
-    const res = await productsApi.getByCategory(id);
-    return res.data;
+  async (slug: string) => {
+    const res = await productsApi.getByCategory(slug);
+    return res.data.products; 
   }
 );
