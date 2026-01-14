@@ -18,6 +18,13 @@ export interface Product {
   shippingInformation?: string;
   sku?: string;
   weight?: number;
+  reviews: {
+    rating: number;
+    comment: string;
+    date: string;
+    reviewerName: string;
+    reviewerEmail: string;
+  }[];
 }
 
 export interface ProductsState {

@@ -19,9 +19,9 @@ const CartPage = () => {
 
   if (items.length === 0) {
     return (
-      <div className="container mx-auto py-20 px-4 text-center">
-        <h1 className="text-4xl font-bold mb-6">Your cart is empty</h1>
-        <p className="text-gray-600 text-lg">
+      <div className="container px-4 py-20 mx-auto text-center">
+        <h1 className="mb-6 text-4xl font-bold">Your cart is empty</h1>
+        <p className="text-lg text-gray-600">
           Add some products to see them here.
         </p>
       </div>
@@ -29,40 +29,34 @@ const CartPage = () => {
   }
 
   return (
-    <div className="container mx-auto py-10 px-4">
-      <h1 className="text-4xl font-bold mb-10 text-center">Your Cart</h1>
+    <div className="container px-4 py-10 mx-auto">
+      <h1 className="mt-12 mb-10 text-4xl font-bold text-center">Your Cart</h1>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-        <div className="lg:col-span-2 space-y-6">
+      <div className="grid grid-cols-1 gap-10 lg:grid-cols-3">
+        <div className="space-y-6 lg:col-span-2">
           {items.map((item) => (
             <div
               key={item.id}
-              className="
-                flex gap-6 bg-white rounded-2xl shadow-md p-6 
-                border border-gray-200 transition hover:shadow-lg
-              "
+              className="flex gap-6 p-6 transition bg-white border border-gray-200 shadow-md rounded-2xl hover:shadow-lg hover:-translate-y-2"
             >
-              <div className="w-32 h-32 flex items-center justify-center overflow-hidden rounded-xl bg-gray-50">
+              <div className="flex items-center justify-center w-32 h-32 overflow-hidden rounded-xl bg-gray-50">
                 <img
                   src={item.thumbnail}
                   alt={item.title}
-                  className="w-full h-full object-contain"
+                  className="object-contain w-full h-full"
                 />
               </div>
 
-              <div className="flex-1 flex flex-col justify-between">
+              <div className="flex flex-col justify-between flex-1">
                 <div>
-                  <h2 className="text-xl font-semibold mb-2">{item.title}</h2>
-                  <p className="text-gray-600 text-lg">€{item.price}</p>
+                  <h2 className="mb-2 text-xl font-semibold">{item.title}</h2>
+                  <p className="text-lg text-gray-600">€{item.price}</p>
                 </div>
 
                 <div className="flex items-center gap-4 mt-4">
                   <button
                     onClick={() => dispatch(decreaseQty(item.id))}
-                    className="
-                      w-8 h-8 flex items-center justify-center 
-                      bg-gray-200 rounded-lg hover:bg-gray-300 transition
-                    "
+                    className="flex items-center justify-center w-8 h-8 transition bg-gray-200 rounded-lg hover:bg-gray-300"
                   >
                     -
                   </button>
@@ -71,17 +65,14 @@ const CartPage = () => {
 
                   <button
                     onClick={() => dispatch(increaseQty(item.id))}
-                    className="
-                      w-8 h-8 flex items-center justify-center 
-                      bg-gray-200 rounded-lg hover:bg-gray-300 transition
-                    "
+                    className="flex items-center justify-center w-8 h-8 transition bg-gray-200 rounded-lg hover:bg-gray-300"
                   >
                     +
                   </button>
 
                   <button
                     onClick={() => dispatch(removeFromCart(item.id))}
-                    className="ml-auto text-red-500 hover:text-red-700 transition"
+                    className="ml-auto text-xl text-pink-400 transition hover:text-pink-600" 
                   >
                     Remove
                   </button>
@@ -92,33 +83,27 @@ const CartPage = () => {
         </div>
 
         <div
-          className="
-            bg-white rounded-2xl shadow-lg p-8 border border-gray-200 
-            h-fit sticky top-10
-          "
+          className="sticky p-8 bg-white border border-gray-200 shadow-lg rounded-2xl h-fit top-10"
         >
-          <h2 className="text-2xl font-semibold mb-6">Order Summary</h2>
+          <h2 className="mb-6 text-2xl font-semibold">Order Summary</h2>
 
-          <div className="flex justify-between text-lg mb-4">
+          <div className="flex justify-between mb-4 text-lg">
             <span>Subtotal:</span>
             <span>€{total.toFixed(2)}</span>
           </div>
 
-          <div className="flex justify-between text-lg mb-4">
+          <div className="flex justify-between mb-4 text-lg">
             <span>Shipping:</span>
             <span className="text-green-600">Free</span>
           </div>
 
-          <div className="flex justify-between text-xl font-bold border-t pt-4">
+          <div className="flex justify-between pt-4 text-xl font-bold border-t">
             <span>Total:</span>
             <span>€{total.toFixed(2)}</span>
           </div>
 
           <button
-            className="
-              w-full bg-black text-white py-4 rounded-xl text-lg font-medium 
-              hover:bg-gray-900 transition mt-8 shadow-md
-            "
+            className="w-full py-4 mt-8 text-lg font-medium text-white transition bg-black shadow-md rounded-xl hover:bg-gray-900"
           >
             Checkout
           </button>
