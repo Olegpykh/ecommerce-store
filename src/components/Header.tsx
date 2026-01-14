@@ -2,6 +2,12 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import NavItem from './NavItem';
 import MobileNavItem from './MobileNavItem';
+import {
+  SignedIn,
+  SignedOut,
+  UserButton,
+  SignInButton,
+} from '@clerk/clerk-react';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -9,16 +15,34 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 z-50 w-full transition-all duration-300 bg-white/80 backdrop-blur-md">
       <div className="container flex items-center justify-between px-4 py-4 pt-4 mx-auto">
-        <Link to="/" className="text-xl font-semibold text-pink-400 select-none hover:text-pink-500">
+        <Link
+          to="/"
+          className="text-xl font-semibold text-pink-400 select-none hover:text-pink-500"
+        >
           store
         </Link>
 
-        <nav className="hidden gap-8 text-lg md:flex">
+        {/* Desktop navigation */}
+        <nav className="items-center hidden gap-8 text-lg md:flex">
           <NavItem to="/" label="home" />
           <NavItem to="/categories" label="categories" />
           <NavItem to="/cart" label="cart" />
+
+          {/* Auth buttons */}
+          <SignedOut>
+            <SignInButton>
+              <button className="px-4 py-1 ml-4 text-white bg-pink-400 rounded-full hover:bg-pink-500">
+                Sign In
+              </button>
+            </SignInButton>
+          </SignedOut>
+
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
         </nav>
 
+        {/* Mobile menu button */}
         <button
           className="md:hidden flex flex-col gap-1.5"
           onClick={() => setMenuOpen(!menuOpen)}
@@ -41,9 +65,10 @@ const Header = () => {
         </button>
       </div>
 
+      {/* Mobile menu */}
       {menuOpen && (
         <div className="md:hidden bg-white/95 backdrop-blur-md">
-          <nav className="flex flex-col items-center gap-4">
+          <nav className="flex flex-col items-center gap-4 py-4">
             <MobileNavItem
               to="/"
               label="Home"
@@ -59,6 +84,19 @@ const Header = () => {
               label="Cart"
               onClick={() => setMenuOpen(false)}
             />
+
+            {/* Mobile auth */}
+            <SignedOut>
+              <SignInButton>
+                <button className="text-pink-400 hover:text-pink-500">
+                  Sign In
+                </button>
+              </SignInButton>
+            </SignedOut>
+
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
           </nav>
         </div>
       )}
