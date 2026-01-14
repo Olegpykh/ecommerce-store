@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
   fetchProducts,
+  loadMoreProducts,
   fetchProductById,
   fetchProductsByCategory,
 } from './productsThunks';
@@ -22,7 +23,12 @@ const initialState: ProductsState = {
 export const productsSlice = createSlice({
   name: 'products',
   initialState,
-  reducers: {},
+  reducers: {
+    resetProducts(state) {
+      state.productsItems = [];
+      state.productsStatus = 'idle';
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchProducts.pending, (state) => {
@@ -36,6 +42,10 @@ export const productsSlice = createSlice({
         state.productsStatus = 'failed';
         state.productsError = action.error.message || 'Failed to load products';
       });
+
+    builder.addCase(loadMoreProducts.fulfilled, (state, action) => {
+      state.productsItems.push(...action.payload);
+    });
 
     builder
       .addCase(fetchProductById.pending, (state) => {
@@ -66,5 +76,7 @@ export const productsSlice = createSlice({
       });
   },
 });
+
+export const { resetProducts } = productsSlice.actions;
 
 export default productsSlice.reducer;

@@ -1,36 +1,22 @@
-import { useEffect, useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import NavItem from './NavItem';
+import MobileNavItem from './MobileNavItem';
 
 const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
-    <header
-      className={`
-        fixed top-0 left-0 w-full z-50 transition-all duration-300 
-        backdrop-blur-md 
-        ${isScrolled ? 'bg-white/90 shadow-md' : 'bg-white/30 shadow-none'}
-      `}
-    >
-      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <Link to="/" className="text-2xl font-bold text-blue-600 select-none">
-          Store
+    <header className="fixed top-0 left-0 z-50 w-full transition-all duration-300 bg-white/80 backdrop-blur-md">
+      <div className="container flex items-center justify-between px-4 py-4 pt-4 mx-auto">
+        <Link to="/" className="text-xl font-semibold text-pink-400 select-none hover:text-pink-500">
+          store
         </Link>
 
-        <nav className="hidden md:flex gap-8 text-lg">
-          <NavItem to="/" label="Home" />
-          <NavItem to="/categories" label="Categories" />
-          <NavItem to="/cart" label="Cart" />
+        <nav className="hidden gap-8 text-lg md:flex">
+          <NavItem to="/" label="home" />
+          <NavItem to="/categories" label="categories" />
+          <NavItem to="/cart" label="cart" />
         </nav>
 
         <button
@@ -56,8 +42,8 @@ const Header = () => {
       </div>
 
       {menuOpen && (
-        <div className="md:hidden bg-white/95 backdrop-blur-md shadow-md">
-          <nav className="flex flex-col items-center py-4 gap-4 text-lg">
+        <div className="md:hidden bg-white/95 backdrop-blur-md">
+          <nav className="flex flex-col items-center gap-4">
             <MobileNavItem
               to="/"
               label="Home"
@@ -81,48 +67,3 @@ const Header = () => {
 };
 
 export default Header;
-
-const NavItem = ({ to, label }: { to: string; label: string }) => (
-  <NavLink
-    to={to}
-    className={({ isActive }) =>
-      `
-      relative pb-1 transition 
-      ${isActive ? 'text-blue-600 font-semibold' : 'text-gray-700'}
-      group
-    `
-    }
-  >
-    {label}
-
-    <span
-      className="
-        absolute left-0 -bottom-0.5 w-0 h-[2px] bg-blue-600 
-        transition-all duration-300 group-hover:w-full
-      "
-    />
-  </NavLink>
-);
-
-const MobileNavItem = ({
-  to,
-  label,
-  onClick,
-}: {
-  to: string;
-  label: string;
-  onClick: () => void;
-}) => (
-  <NavLink
-    to={to}
-    onClick={onClick}
-    className={({ isActive }) =>
-      `
-      text-lg transition 
-      ${isActive ? 'text-blue-600 font-semibold' : 'text-gray-700'}
-    `
-    }
-  >
-    {label}
-  </NavLink>
-);
