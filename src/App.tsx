@@ -7,12 +7,16 @@ import CategoriesPage from './pages/CategoriesPage';
 import CategoryPage from './pages/CategoryPage';
 import CartPage from './pages/CartPage';
 import NotFoundPage from './pages/NotFoundPage';
+import SignInPage from './pages/SignInPage';
+import SignUpPage from './pages/SignUpPage';
 
 export const App = () => {
   return (
     <BrowserRouter>
       <Layout>
         <Routes>
+          <Route path="/sign-in" element={<SignInPage />} />
+          <Route path="/sign-up" element={<SignUpPage />} />
           <Route path="/" element={<HomePage />} />
           <Route path="/products/:id" element={<ProductPage />} />
           <Route path="/categories" element={<CategoriesPage />} />

@@ -2,7 +2,7 @@ const HeroBanner = () => {
   return (
     <div className="relative w-full h-[620px] overflow-hidden mb-16 pt-24">
       <img
-        src="/bannerSm.jpg"
+        src="/bannerCat.jpg"
         alt="Hero banner"
         className="absolute inset-0 object-cover w-full h-full"
       />
