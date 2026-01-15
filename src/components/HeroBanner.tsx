@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const HeroBanner = () => {
   return (
     <div className="relative w-full h-[620px] overflow-hidden mb-16 pt-24">
@@ -22,9 +24,12 @@ const HeroBanner = () => {
           Designed for everyday life.
         </p>
 
-        <button className="px-8 py-3 mt-8 text-lg font-medium text-black transition bg-white rounded-full hover:bg-pink-400 hover:text-white">
+        <Link
+          to="/categories"
+          className="px-8 py-3 mt-8 text-lg font-medium text-black transition bg-white rounded-full hover:bg-pink-400 hover:text-white"
+        >
           Shop Now
-        </button>
+        </Link>
       </div>
     </div>
   );
