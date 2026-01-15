@@ -17,7 +17,7 @@ const Header = () => {
       <div className="container flex items-center justify-between px-4 py-4 pt-4 mx-auto">
         <Link
           to="/"
-          className="text-xl font-semibold text-pink-400 select-none hover:text-pink-500"
+          className="text-xl font-semibold text-pink-500 select-none hover:text-pink-600"
         >
           store
         </Link>
@@ -31,7 +31,7 @@ const Header = () => {
           {/* Auth buttons */}
           <SignedOut>
             <SignInButton>
-              <button className="px-4 py-1 ml-4 text-white bg-pink-400 rounded-full hover:bg-pink-500">
+              <button className="px-4 py-1 ml-4 text-white bg-pink-500 rounded-full hover:bg-pink-600">
                 Sign In
               </button>
             </SignInButton>
@@ -88,7 +88,7 @@ const Header = () => {
             {/* Mobile auth */}
             <SignedOut>
               <SignInButton>
-                <button className="text-pink-400 hover:text-pink-500">
+                <button className="text-pink-500 hover:text-pink-600">
                   Sign In
                 </button>
               </SignInButton>
