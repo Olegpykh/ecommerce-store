@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import type { RootState, AppDispatch } from '../store/store';
+import { Link } from 'react-router-dom';
 
 import {
   removeFromCart,
@@ -72,7 +73,7 @@ const CartPage = () => {
 
                   <button
                     onClick={() => dispatch(removeFromCart(item.id))}
-                    className="ml-auto text-xl text-pink-400 transition hover:text-pink-600" 
+                    className="ml-auto text-xl text-pink-400 transition hover:text-pink-600"
                   >
                     Remove
                   </button>
@@ -82,9 +83,7 @@ const CartPage = () => {
           ))}
         </div>
 
-        <div
-          className="sticky p-8 bg-white border border-gray-200 shadow-lg rounded-2xl h-fit top-10"
-        >
+        <div className="sticky p-8 bg-white border border-gray-200 shadow-lg rounded-2xl h-fit top-10">
           <h2 className="mb-6 text-2xl font-semibold">Order Summary</h2>
 
           <div className="flex justify-between mb-4 text-lg">
@@ -102,11 +101,12 @@ const CartPage = () => {
             <span>€{total.toFixed(2)}</span>
           </div>
 
-          <button
-            className="w-full py-4 mt-8 text-lg font-medium text-white transition bg-black shadow-md rounded-xl hover:bg-gray-900"
+          <Link
+            to="/checkout"
+            className="block w-full py-4 mt-8 text-lg font-medium text-center text-white transition bg-black shadow-md rounded-xl hover:bg-gray-900"
           >
             Checkout
-          </button>
+          </Link>
         </div>
       </div>
     </div>
