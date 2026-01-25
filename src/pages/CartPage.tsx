@@ -30,8 +30,10 @@ const CartPage = () => {
   }
 
   return (
-    <div className="container px-4 py-10 mx-auto">
-      <h1 className="mt-12 mb-10 text-4xl font-bold text-center">Your Cart</h1>
+    <div className="w-full min-h-screen px-4 py-10 dark:bg-black ">
+      <h1 className="mt-12 mb-10 text-4xl font-bold text-center dark:text-white">
+        Your Cart
+      </h1>
 
       <div className="grid grid-cols-1 gap-10 lg:grid-cols-3">
         <div className="space-y-6 lg:col-span-2">
@@ -103,7 +105,7 @@ const CartPage = () => {
 
           <Link
             to="/checkout"
-            className="block w-full py-4 mt-8 text-lg font-medium text-center text-white transition bg-black shadow-md rounded-xl hover:bg-gray-900"
+            className="block w-full py-4 mt-8 text-lg font-medium text-center text-white transition bg-black shadow-md rounded-xl hover:bg-gray-900 dark:hover:bg-pink-500"
           >
             Checkout
           </Link>

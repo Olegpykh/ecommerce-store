@@ -5,7 +5,7 @@ const OrderConfirmationPage = () => {
 const [orderId] = useState(() => Math.floor(100000 + Math.random() * 900000));
 
   return (
-    <div className="container px-4 py-24 mx-auto text-center">
+    <div className="min-h-screen px-10 py-24 mx-auto text-center dark:bg-black">
       <div className="max-w-xl p-10 mx-auto bg-white border border-gray-200 shadow-xl rounded-2xl">
         <h1 className="mb-6 text-4xl font-bold text-pink-500">
           Thank you for your order!

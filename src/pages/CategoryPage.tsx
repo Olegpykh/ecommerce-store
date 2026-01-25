@@ -65,17 +65,19 @@ const CategoryPage = () => {
   }, [productsItems, sort, brandFilter, priceRange]);
 
   return (
-    <div className="container px-4 py-10 mx-auto mt-12">
-      <h1 className="mb-10 text-4xl font-bold text-center">{categoryName}</h1>
-        <FiltersBar
-          sort={sort}
-          setSort={setSort}
-          brandFilter={brandFilter}
-          setBrandFilter={setBrandFilter}
-          priceRange={priceRange}
-          setPriceRange={setPriceRange}
-          brands={brands}
-        />
+    <div className="px-4 py-24 mx-auto dark:bg-black dark:text-white">
+      <h1 className="py-10 text-4xl font-bold text-center ">
+        {categoryName}
+      </h1>
+      <FiltersBar
+        sort={sort}
+        setSort={setSort}
+        brandFilter={brandFilter}
+        setBrandFilter={setBrandFilter}
+        priceRange={priceRange}
+        setPriceRange={setPriceRange}
+        brands={brands}
+      />
 
       {isLoading && (
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 animate-pulse">
@@ -99,7 +101,7 @@ const CategoryPage = () => {
       )}
 
       {!isLoading && !hasError && filteredProducts.length > 0 && (
-        <div className="grid grid-cols-1 gap-8 mt-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 animate-fadeIn">
+        <div className="grid grid-cols-1 gap-8 px-14 py-14 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 animate-fadeIn dark:bg-black dark:text-black">
           {filteredProducts.map((product) => (
             <ProductCard
               key={product.id}

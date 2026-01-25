@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 const HeroBanner = () => {
   return (
-    <div className="relative w-full h-[620px] overflow-hidden mb-16 pt-24">
+    <div className="relative w-full h-[620px] overflow-hidden pt-24">
       <img
         src="/bannerCat.jpg"
         alt="Hero banner"

@@ -3,11 +3,14 @@ import { categoriesReducer } from '../features/categories';
 import cartReducer from "../features/cart/cartSlice"
 import { configureStore } from '@reduxjs/toolkit';
 
+import themeReducer from "../features/theme/themeSlice"
+
 export const store = configureStore({
   reducer: {
     categories: categoriesReducer,
     products: productsReducer,
     cart: cartReducer,
+    theme:themeReducer
   },
 });
 

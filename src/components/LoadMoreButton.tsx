@@ -1,5 +1,6 @@
 interface LoadMoreButtonProps {
   onClick: () => void;
+  className?: string;
 }
 
 export const LoadMoreButton = ({ onClick }: LoadMoreButtonProps) => {

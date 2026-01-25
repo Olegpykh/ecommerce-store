@@ -21,12 +21,12 @@ const CategoriesPage = () => {
 
   return (
     <>
-      <div className="mt-16">
+      <div className="mt-16 ">
         <HeroBanner />
       </div>
 
-      <div className="px-12 mx-auto mt-10">
-        <h1 className="mb-10 text-4xl font-bold text-center">Categories</h1>
+      <div className="px-12 mx-auto dark:bg-black/90 dark:text-black">
+        <h1 className="py-10 mb-10 text-4xl font-bold text-center dark:text-white">Categories</h1>
 
         {categoriesStatus === 'loading' && (
           <p className="text-xl text-center">Loading categories...</p>

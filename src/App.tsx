@@ -15,6 +15,7 @@ const OrderConfirmationPage = lazy(
 const SignInPage = lazy(() => import('./pages/SignInPage'));
 const SignUpPage = lazy(() => import('./pages/SignUpPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
+const AccountPage = lazy(()=>import("./pages/AccountPage"))
 
 export const App = () => {
   return (
@@ -30,6 +31,7 @@ export const App = () => {
             <Route path="/categories/:slug" element={<CategoryPage />} />
             <Route path="/cart" element={<CartPage />} />
             <Route path="/checkout" element={<CheckoutPage />} />
+            <Route path="/account" element={<AccountPage />} />
             <Route
               path="/order-confirmation"
               element={<OrderConfirmationPage />}

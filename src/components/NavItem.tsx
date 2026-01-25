@@ -5,7 +5,7 @@ const NavItem = ({ to, label }: { to: string; label: string }) => (
     to={to}
     className={({ isActive }) =>
       `
-      relative pb-1 transition 
+      relative pb-1 transition dark:text-white
       ${isActive ? 'text-black font-semibold' : 'text-gray-700'}
       group
     `
