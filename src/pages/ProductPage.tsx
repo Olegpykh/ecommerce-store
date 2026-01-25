@@ -38,7 +38,7 @@ const ProductPage = () => {
       : null;
 
   return (
-    <div className="container px-4 py-10 mx-auto">
+    <div className="px-10 py-10 mx-auto dark:bg-black/90 dark:text-white">
       {isLoading && <p className="text-xl text-center">Loading product...</p>}
 
       {hasError && (
@@ -49,7 +49,7 @@ const ProductPage = () => {
 
       {!isLoading && !hasError && currentProduct && (
         <>
-          <div className="grid grid-cols-1 gap-16 mt-12 md:grid-cols-2">
+          <div className="grid grid-cols-1 gap-16 mt-20 md:grid-cols-2">
             <div className="flex flex-col items-center md:sticky md:top-10">
               <div
                 className="
@@ -95,48 +95,50 @@ const ProductPage = () => {
               </div>
             </div>
 
-            <div className="flex flex-col justify-center">
-              <h1 className="mb-6 text-4xl font-semibold text-gray-900">
+            <div className="flex flex-col justify-center dark:text-white">
+              <h1 className="mb-6 text-4xl font-semibold text-gray-900 dark:text-white">
                 {currentProduct.title}
               </h1>
 
-              <p className="mb-8 text-lg leading-relaxed text-gray-600">
+              <p className="mb-8 text-lg leading-relaxed text-gray-600 dark:text-white">
                 {currentProduct.description}
               </p>
 
               <div className="flex items-center gap-4 mb-8">
-                <p className="text-5xl font-bold text-gray-900">
+                <p className="text-5xl font-bold text-gray-900 dark:text-white">
                   €{currentProduct.price}
                 </p>
 
                 {oldPrice && (
-                  <p className="text-2xl text-gray-500 line-through">
+                  <p className="text-2xl text-gray-500 line-through dark:text-white">
                     €{oldPrice}
                   </p>
                 )}
 
                 {currentProduct.discountPercentage > 0 && (
-                  <span className="text-xl font-semibold text-red-500">
+                  <span className="text-xl font-semibold text-red-500 ">
                     -{currentProduct.discountPercentage}%
                   </span>
                 )}
               </div>
 
-              <div className="mb-10 space-y-2 text-lg text-gray-700">
+              <div className="mb-10 space-y-2 text-lg text-gray-700 dark:text-white">
                 <p>
-                  <span className="font-semibold">Brand:</span>{' '}
+                  <span className="font-semibold dark:text-white">Brand:</span>{' '}
                   {currentProduct.brand}
                 </p>
                 <p>
-                  <span className="font-semibold">Category:</span>{' '}
+                  <span className="font-semibold dark:text-white">
+                    Category:
+                  </span>{' '}
                   {currentProduct.category}
                 </p>
                 <p>
-                  <span className="font-semibold">Rating:</span>{' '}
+                  <span className="font-semibold dark:text-white">Rating:</span>{' '}
                   {currentProduct.rating}
                 </p>
                 <p>
-                  <span className="font-semibold">Stock:</span>{' '}
+                  <span className="font-semibold dark:text-white">Stock:</span>{' '}
                   {currentProduct.stock > 0
                     ? `${currentProduct.stock} pcs`
                     : 'Out of stock'}
@@ -150,11 +152,11 @@ const ProductPage = () => {
                   setTimeout(() => setAdded(false), 1500);
                 }}
                 className={`
-                  w-full py-4 text-lg font-medium rounded-xl transition shadow-md
+                  w-full py-4 text-lg font-medium rounded-xl transition shadow-md dark:text-white
                   ${
                     added
-                      ? 'bg-pink-400 hover:bg-pink-600 text-white'
-                      : 'bg-black hover:bg-gray-900 text-white'
+                      ? 'bg-pink-400 hover:bg-pink-600 text-white '
+                      : 'bg-black hover:bg-gray-900 text-white dark:hover:bg-pink-500 dark:bg-white dark:text-black'
                   }
                 `}
               >

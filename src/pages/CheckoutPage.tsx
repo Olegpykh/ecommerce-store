@@ -24,8 +24,10 @@ const CheckoutPage = () => {
       </SignedOut>
 
       <SignedIn>
-        <div className="container px-4 py-20 mx-auto">
-          <h1 className="mb-10 text-4xl font-bold text-center">Checkout</h1>
+        <div className="min-h-screen px-10 py-20 dark:bg-black">
+          <h1 className="mb-10 text-4xl font-bold text-center dark:text-white">
+            Checkout
+          </h1>
 
           <div className="max-w-3xl p-8 mx-auto bg-white border border-gray-200 shadow-lg rounded-2xl">
             <h2 className="mb-6 text-2xl font-semibold">Customer</h2>
@@ -63,7 +65,7 @@ const CheckoutPage = () => {
 
             <Link
               to="/order-confirmation"
-              className="block w-full py-4 mt-10 text-lg font-medium text-center text-white transition bg-black shadow-md rounded-xl hover:bg-gray-900"
+              className="block w-full py-4 mt-10 text-lg font-medium text-center text-white transition bg-black shadow-md rounded-xl hover:bg-gray-900 dark:hover:bg-pink-500"
             >
               Place Order
             </Link>

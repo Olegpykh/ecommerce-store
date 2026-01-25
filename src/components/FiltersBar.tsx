@@ -29,12 +29,12 @@ const FiltersBar = ({
 
   return (
     <>
-      <div className="w-full bg-white border-b">
-        <div className="container flex items-center justify-between px-4 py-4 mx-auto">
+      <div className="w-full bg-white border-b dark:bg-black/90 dark:text-black">
+        <div className="flex items-center justify-between px-10 py-4 mx-auto">
           <div className="relative">
             <button
               onClick={() => setSortOpen(!sortOpen)}
-              className="flex items-center gap-2 px-3 py-2 border rounded-lg shadow-sm hover:bg-gray-50"
+              className="flex items-center gap-2 px-3 py-2 border rounded-lg shadow-sm hover:bg-gray-50 dark:bg-white"
             >
               <BarsArrowDownIcon className="w-5 h-5" />
               Sort
@@ -106,7 +106,7 @@ const FiltersBar = ({
               ))}
             </select>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 dark:text-white">
               <span>€{priceRange[0]}</span>
               <input
                 type="range"

@@ -62,45 +62,113 @@ const HomePage = () => {
       : categoriesItems.find((c) => c.slug === selectedCategory)?.name ||
         'Products';
 
-  return (
-    <>
-      <div className="mt-16">
-        <HeroBanner />
-      </div>
-      <div className="px-16 py-8 mx-auto ">
-        <CategoriesSection
-          categories={categoriesItems}
-          selected={selectedCategory}
-          onSelect={setSelectedCategory}
-          status={categoriesStatus}
-          error={categoriesError}
-        />
+        return (
+          // Добавляем фоновый цвет для всей страницы и цвет текста по умолчанию
+          <div className="min-h-screen text-gray-900 transition-colors duration-300 bg-white dark:bg-black/90 dark:text-black">
+            {/* Контейнер для HeroBanner (если ему нужен отступ) */}
+            <div className="mt-16">
+              <HeroBanner />
+            </div>
 
-        <div>
-          <SectionTitle title={sectionTitle} />
+            {/* Основной контент */}
+            <div className="px-16 py-20 mx-auto dark:text-white">
+              <CategoriesSection
+                categories={categoriesItems}
+                selected={selectedCategory}
+                onSelect={setSelectedCategory}
+                status={categoriesStatus}
+                error={categoriesError}
+              />
 
-          {isLoading && <LoadingState message="Loading products..." />}
+              <div className="mt-8">
+                {/* Секция заголовка */}
+                <div className="dark:text-white">
+                  <SectionTitle title={sectionTitle} />
+                </div>
 
-          {hasError && (
-            <ErrorState message={productsError || categoriesError || 'Error'} />
-          )}
+                {/* Состояния загрузки, ошибки и пустоты */}
+                <div className="flex justify-center py-10">
+                  {isLoading && (
+                    <div className="text-gray-600 dark:text-gray-400">
+                      <LoadingState message="Loading products..." />
+                    </div>
+                  )}
 
-          {!isLoading && !hasError && productsItems.length === 0 && (
-            <EmptyState message="No products found" />
-          )}
-          <ProductsGrid
-            products={productsItems}
-            addedId={addedId}
-            setAddedId={setAddedId}
-          />
+                  {hasError && (
+                    <div className="text-red-500 dark:text-red-400">
+                      <ErrorState
+                        message={productsError || categoriesError || 'Error'}
+                      />
+                    </div>
+                  )}
 
-          {selectedCategory === null && (
-            <LoadMoreButton onClick={() => dispatch(loadMoreProducts())} />
-          )}
-        </div>
-      </div>
-    </>
-  );
+                  {!isLoading && !hasError && productsItems.length === 0 && (
+                    <div className="text-gray-500 dark:text-gray-400">
+                      <EmptyState message="No products found" />
+                    </div>
+                  )}
+                </div>
+
+                {/* Сетка товаров */}
+                <ProductsGrid
+                  products={productsItems}
+                  addedId={addedId}
+                  setAddedId={setAddedId}
+                />
+
+                {/* Кнопка "Загрузить еще" */}
+                {selectedCategory === null && productsItems.length > 0 && (
+                  <div className="flex justify-center mt-12">
+                    <LoadMoreButton
+                      onClick={() => dispatch(loadMoreProducts())}
+                      className="text-gray-900 transition-colors bg-gray-100 dark:bg-gray-800 dark:text-black hover:bg-gray-200 dark:hover:bg-gray-700"
+                    />
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        );
+
+  // return (
+  //   <>
+  //     <div className="mt-16">
+  //       <HeroBanner />
+  //     </div>
+  //     <div className="px-16 py-8 mx-auto">
+  //       <CategoriesSection
+  //         categories={categoriesItems}
+  //         selected={selectedCategory}
+  //         onSelect={setSelectedCategory}
+  //         status={categoriesStatus}
+  //         error={categoriesError}
+  //       />
+
+  //       <div>
+  //         <SectionTitle title={sectionTitle} />
+
+  //         {isLoading && <LoadingState message="Loading products..." />}
+
+  //         {hasError && (
+  //           <ErrorState message={productsError || categoriesError || 'Error'} />
+  //         )}
+
+  //         {!isLoading && !hasError && productsItems.length === 0 && (
+  //           <EmptyState message="No products found" />
+  //         )}
+  //         <ProductsGrid
+  //           products={productsItems}
+  //           addedId={addedId}
+  //           setAddedId={setAddedId}
+  //         />
+
+  //         {selectedCategory === null && (
+  //           <LoadMoreButton onClick={() => dispatch(loadMoreProducts())} />
+  //         )}
+  //       </div>
+  //     </div>
+  //   </>
+  // );
 };
 
 export default HomePage;
