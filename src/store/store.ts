@@ -2,7 +2,7 @@ import { productsReducer } from '../features/products';
 import { categoriesReducer } from '../features/categories';
 import cartReducer from "../features/cart/cartSlice"
 import { configureStore } from '@reduxjs/toolkit';
-
+import crudReducer from "../features/crud/crudSlice"
 import themeReducer from "../features/theme/themeSlice"
 
 export const store = configureStore({
@@ -10,7 +10,8 @@ export const store = configureStore({
     categories: categoriesReducer,
     products: productsReducer,
     cart: cartReducer,
-    theme:themeReducer
+    theme: themeReducer,
+    crud: crudReducer,
   },
 });
 

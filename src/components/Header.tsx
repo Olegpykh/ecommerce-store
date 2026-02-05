@@ -26,6 +26,7 @@ const Header = () => {
           <NavItem to="/" label="home" />
           <NavItem to="/categories" label="categories" />
           <NavItem to="/cart" label="cart" />
+          <NavItem to="/api-demo" label="API DEMO" />
           <SignedOut>
             <SignInButton>
               <button className="px-4 py-1 ml-4 text-white bg-pink-500 rounded-full hover:bg-pink-600 ">
@@ -76,6 +77,11 @@ const Header = () => {
             <MobileNavItem
               to="/cart"
               label="Cart"
+              onClick={() => setMenuOpen(false)}
+            />
+            <MobileNavItem
+              to="/api-demo"
+              label="API Demo"
               onClick={() => setMenuOpen(false)}
             />
 
