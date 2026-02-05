@@ -16,6 +16,7 @@ const SignInPage = lazy(() => import('./pages/SignInPage'));
 const SignUpPage = lazy(() => import('./pages/SignUpPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 const AccountPage = lazy(()=>import("./pages/AccountPage"))
+const APIDemo = lazy(() => import('./features/crud/CrudDemo'));
 
 export const App = () => {
   return (
@@ -30,6 +31,7 @@ export const App = () => {
             <Route path="/categories" element={<CategoriesPage />} />
             <Route path="/categories/:slug" element={<CategoryPage />} />
             <Route path="/cart" element={<CartPage />} />
+            <Route path="/api-demo" element={<APIDemo />} />
             <Route path="/checkout" element={<CheckoutPage />} />
             <Route path="/account" element={<AccountPage />} />
             <Route
